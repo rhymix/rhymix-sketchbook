@@ -1777,19 +1777,6 @@
 					<title xml:lang="ko">사용 안함(기본)</title>
 				</options>
 			</var>
-			<var name="m_editor" type="radio">
-				<title xml:lang="ko">모바일 에디터</title>
-				<description xml:lang="ko">모바일 에디터를 선택합니다.</description>
-				<options value="">
-					<title xml:lang="ko">HTML5 WYSIWYG(기본)</title>
-				</options>
-				<options value="2">
-					<title xml:lang="ko">Textarea</title>
-				</options>
-				<options value="3">
-					<title xml:lang="ko">웹 에디터</title>
-				</options>
-			</var>
 			<var name="kakao_key" type="text">
 				<title xml:lang="ko">*카카오톡 앱키 입력</title>
 				<description xml:lang="ko">카카오톡 링크를 사용하려면 'https://developers.kakao.com/'에서 발급한 API 앱키(Javascript 키)를 입력하셔야 합니다. 자세한 사항은 카카오 개발자 사이트를 참조하세요. 'https://developers.kakao.com/docs/js#카카오톡-링크-예제:-동적으로-바뀌는-내용의-카카오톡-링크-보내기'</description>
