@@ -173,7 +173,7 @@
 			<ul>
 				<!--@for($i=0;$i<count($tag_list);$i++)-->
 				{@ $tag=$tag_list[$i]; }
-				<li><a href="{getUrl('search_target','tag','search_keyword',$tag,'document_srl','')}">{htmlspecialchars($tag)}</a><span class="comma">,</span></li>
+				<li><a href="{getUrl('search_target','tag','search_keyword',$tag,'document_srl','')}">{escape($tag, false)}</a><span class="comma">,</span></li>
 				<!--@end-->
 			</ul>
 		</div>
@@ -368,7 +368,7 @@ Source form : http://www.xpressengine.com/21617245 by 시니시즘. Thanks!
 					<!--// ie8; --><i class="ie8_only bl"></i><i class="ie8_only br"></i>
 				</div>
 			</div>
-			<img class="zbxe_widget_output" widget="socialxe_comment" skin="sketchbook5" colorset="{$mi->colorset}" document_srl="{$oDocument->document_srl}" content_link="{getFullUrl('','document_srl',$oDocument->document_srl,'dummy','1')}" content_title="{htmlspecialchars($oDocument->getTitleText())}" enter_send="N" auto_view_sub="Y"|cond="!$mi->auto_view_sub" style="overflow:visible" />
+			<img class="zbxe_widget_output" widget="socialxe_comment" skin="sketchbook5" colorset="{$mi->colorset}" document_srl="{$oDocument->document_srl}" content_link="{getFullUrl('','document_srl',$oDocument->document_srl,'dummy','1')}" content_title="{escape($oDocument->getTitleText(), false)}" enter_send="N" auto_view_sub="Y"|cond="!$mi->auto_view_sub" style="overflow:visible" />
 			<!--@else-->
 			<!--// Comment Write : Top -->
 			<include cond="$oDocument->allowComment() && !$mi->cmt_wrt_position" target="_comment_write.html" />

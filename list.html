@@ -192,7 +192,7 @@ Kakao.init('<!--@if($mi->kakao_key)-->{$mi->kakao_key}<!--@else-->5e9dc559053190
 			<span class="btn_img itx_wrp">
 				<button type="submit" onclick="jQuery(this).parents('form.bd_srch_btm').submit();return false;" class="ico_16px search">Search</button>
 				<label for="bd_srch_btm_itx_{$mi->module_srl}">{$lang->cmd_search}</label>
-				<input type="text" name="search_keyword" id="bd_srch_btm_itx_{$mi->module_srl}" class="bd_srch_btm_itx srch_itx" value="{htmlspecialchars($search_keyword)}" />
+				<input type="text" name="search_keyword" id="bd_srch_btm_itx_{$mi->module_srl}" class="bd_srch_btm_itx srch_itx" value="{escape($search_keyword, false)}" />
 			</span>
 			<span class="btn_img select">
 				<select name="search_target">
@@ -219,8 +219,8 @@ Kakao.init('<!--@if($mi->kakao_key)-->{$mi->kakao_key}<!--@else-->5e9dc559053190
 	<input type="hidden" name="vid" value="{$vid}" />
 	<input type="hidden" name="mid" value="{$mid}" />
 	<input type="hidden" name="category" value="{$category}" />
-	<input type="hidden" name="search_keyword" value="{htmlspecialchars($search_keyword)}" />
-	<input type="hidden" name="search_target" value="{$search_target}" />
+	<input type="hidden" name="search_keyword" value="{escape($search_keyword, false)}" />
+	<input type="hidden" name="search_target" value="{escape($search_target, false)}" />
 	<input type="hidden" name="listStyle" value="{$mi->default_style}" />
 	{@ $prev_page = max($page-1, 1)}
 	{@ $next_page = min($page+1, $page_navigation->last_page)}

@@ -23,7 +23,7 @@ $mi->fdb_style='fdb_v2';
 			<block cond="!$is_logged">
 			<span class="itx_wrp">
 				<label for="nick_name">{$lang->writer}</label>
-				<input type="text" name="nick_name" id="nick_name" value="{htmlspecialchars($oDocument->get('nick_name'))}" class="itx n_p" />
+				<input type="text" name="nick_name" id="nick_name" value="{escape($oDocument->get('nick_name'), false)}" class="itx n_p" />
 			</span>
 			<span class="itx_wrp">
 				<label for="password">{$lang->password}</label>
@@ -31,11 +31,11 @@ $mi->fdb_style='fdb_v2';
 			</span>	
 			<span class="itx_wrp">
 				<label for="email_address">{$lang->email_address}</label>
-				<input type="text" name="email_address" id="email_address" value="{htmlspecialchars($oDocument->get('email_address'))}" class="itx m_h" />
+				<input type="text" name="email_address" id="email_address" value="{escape($oDocument->get('email_address'), false)}" class="itx m_h" />
 			</span>
 			<span class="itx_wrp">
 				<label for="homepage">{$lang->homepage}</label>
-				<input type="text" name="homepage" id="homepage" value="{htmlspecialchars($oDocument->get('homepage'))}" class="itx m_h" />
+				<input type="text" name="homepage" id="homepage" value="{escape($oDocument->get('homepage'), false)}" class="itx m_h" />
 			</span>
 			</block>
 			<input type="submit" value="{$lang->cmd_registration}" class="bd_btn fr" />

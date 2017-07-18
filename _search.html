@@ -12,7 +12,7 @@
 				</span>
 			</td>
 			<td class="itx_wrp">
-				<input type="text" name="search_keyword" value="{htmlspecialchars($search_keyword)}" class="itx srch_itx" />
+				<input type="text" name="search_keyword" value="{escape($search_keyword, false)}" class="itx srch_itx" />
 			</td>
 			<td>
 				<button type="submit" onclick="jQuery(this).parents('form').submit();return false" class="bd_btn">{$lang->cmd_search}</button>

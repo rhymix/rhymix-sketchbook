@@ -27,7 +27,7 @@
 	<input type="hidden" name="mid" value="{$mid}" />
 	<input type="hidden" name="document_srl" value="{$oComment->get('document_srl')}" />
 	<input type="hidden" name="comment_srl" value="{$oComment->get('comment_srl')}" />
-	<input type="hidden" name="content" value="{htmlspecialchars($oComment->get('content'))}" />
+	<input type="hidden" name="content" value="{escape($oComment->get('content'))}" />
 	<input type="hidden" name="parent_srl" value="{$oComment->get('parent_srl')}" />
 	<div cond="!Mobile::isMobileCheckByAgent() || $mi->m_editor==3" class="get_editor">{$oComment->getEditor()}</div>
 	<div cond="Mobile::isMobileCheckByAgent() && $mi->m_editor!=3" class="m_editor">

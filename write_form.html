@@ -7,7 +7,7 @@
 	<!--@if($oDocument->getContentText())-->
 	<input type="hidden" name="content" value="{$oDocument->getContentText()}" />
 	<!--@else-->
-	<input type="hidden" name="content" value="{htmlspecialchars($mi->content_default)}" />
+	<input type="hidden" name="content" value="{escape($mi->content_default)}" />
 	<!--@end-->
 	<input type="hidden" name="document_srl" value="{$document_srl}" />
 	<input cond="Mobile::isMobileCheckByAgent()" type="hidden" name="use_html" value="Y" />
@@ -26,7 +26,7 @@
 			<td width="100%">
 				<span class="itx_wrp">
 					<label for="postTitle">{$lang->title}</label>
-					<input type="text" name="title" class="itx" id="postTitle" title="{$lang->title}" value="{htmlspecialchars($oDocument->getTitleText())}"|cond="$oDocument->getTitleText()" />
+					<input type="text" name="title" class="itx" id="postTitle" title="{$lang->title}" value="{escape($oDocument->getTitleText(), false)}"|cond="$oDocument->getTitleText()" />
 				</span>
 			</td>
 			<td cond="$is_logged && !$oDocument->isExists() || $oDocument->get('status')=='TEMP'" class="m_no"><button type="button" class="bd_btn" onclick="doDocumentLoad(this);">{$lang->cmd_load}</button></td>
@@ -47,7 +47,7 @@
 	<div class="tag itx_wrp">
 		<span class="itx_wrp">
 			<label for="tags">{$lang->tag} : {$lang->about_tag}</label>
-            <input type="text" name="tags" id="tags" value="{htmlspecialchars($oDocument->get('tags'))}" class="itx" />
+            <input type="text" name="tags" id="tags" value="{escape($oDocument->get('tags'), false)}" class="itx" />
 		</span>
 	</div>
 
@@ -64,11 +64,11 @@
 		</span>
 		<span class="itx_wrp">
 			<label for="email_address">{$lang->email_address}</label>
-            <input type="text" name="email_address" id="email_address" value="{htmlspecialchars($oDocument->get('email_address'))}" class="itx m_h" />
+            <input type="text" name="email_address" id="email_address" value="{escape($oDocument->get('email_address'), false)}" class="itx m_h" />
 		</span>
 		<span class="itx_wrp">
 			<label for="homepage">{$lang->homepage}</label>
-            <input type="text" name="homepage" id="homepage" value="{htmlspecialchars($oDocument->get('homepage'))}" class="itx m_h" />
+            <input type="text" name="homepage" id="homepage" value="{escape($oDocument->get('homepage'), false)}" class="itx m_h" />
 		</span>
 		</block>
 	</div>
