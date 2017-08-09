@@ -1,0 +1,54 @@
+<include target="__setting.html" />
+
+<table class="bd_lst bd_tb_lst bd_tb">
+	<caption class="blind">List of Articles</caption>
+	<thead class="bg_f_f9">
+	<!--// 테이블 헤더 -->
+	<tr>
+		<th scope="col"><span>{$lang->title}</span></th>
+		<th scope="col"><span>{$lang->writer}</span></th>
+		<th scope="col"><span>{$lang->last_updater}</span></th>
+		<th scope="col"><span>{$lang->last_post}</span></th>
+	</tr>
+	</thead>
+	<tbody cond="$updatelog->data">
+		<!--// Normal -->
+		<tr loop="$updatelog->data=>$val">
+			<td class="title">
+				<a href="{getUrl('', 'mid', $mid, 'act', 'dispBoardUpdateLogView', 'update_id', $val->update_id)}" class="hx">{$val->title}</a>
+			</td>
+			<td class="author">
+				<span>{$val->nick_name}</span>
+			</td>
+			<td class="author">
+				<span>{$val->update_nick_name}</span>
+			</td>
+			<td class="time last_update m_no">
+				{zdate($val->regdate, 'Y.m.d H:i:s')}
+			</td>
+		</tr>
+	</tbody>
+</table>
+<div action="./" method="get" class="bd_pg clear">
+	{@ $prev_page = max($page-1, 1)}
+	{@ $next_page = min($page+1, $page_navigation->last_page)}
+	<a cond="$page!=$prev_page" href="{getUrl('page',$prev_page,'document_srl','','division',$division,'last_division',$last_division)}" class="direction"><i class="fa fa-angle-left"></i> Prev</a>
+	<strong cond="$page==$prev_page" class="direction"><i class="fa fa-angle-left"></i> Prev</strong>
+	<a class="frst_last bubble<!--@if($page==1)--> this<!--@end-->" href="{getUrl('page','','document_srl','','division',$division,'last_division',$last_division)}" title="{$lang->first_page}">1</a>
+	<span cond="$page>($mi->page_count)/2+2" class="bubble"><a href="#" class="tg_btn2" data-href=".bd_go_page" title="{$lang->go_page}">...</a></span>
+	<block loop="$page_no=$page_navigation->getNextPage()" cond="$page_no!=1 && $page_no!=$page_navigation->last_page">
+		<strong class="this" cond="$page==$page_no">{$page_no}</strong>
+		<a cond="$page!=$page_no" href="{getUrl('page',$page_no,'document_srl','','division',$division,'last_division',$last_division)}">{$page_no}</a>
+	</block>
+	<span cond="($page+($mi->page_count+1)/2<$page_navigation->last_page) && ($mi->page_count+1<$page_navigation->last_page)" class="bubble"><a href="#" class="tg_btn2" data-href=".bd_go_page" title="{$lang->cmd_go_to_page}">...</a></span>
+	<a cond="$page_navigation->last_page!=1" class="frst_last bubble<!--@if($page==$page_navigation->last_page)--> this<!--@end-->" href="{getUrl('page',$page_navigation->last_page,'document_srl','','division',$division,'last_division',$last_division)}" title="{$lang->last_page}">{$page_navigation->last_page}</a>
+	<a cond="$page!=$next_page" href="{getUrl('page',$next_page,'document_srl','','division',$division,'last_division',$last_division)}" class="direction">Next <i class="fa fa-angle-right"></i></a>
+	<strong cond="$page==$next_page" class="direction">Next <i class="fa fa-angle-right"></i></strong>
+	<div class="bd_go_page tg_cnt2 wrp">
+		<button type="button" class="tg_blur2"></button>
+		<input type="text" name="page" class="itx" />/ {$page_navigation->last_page} <button type="submit" class="bd_btn">GO</button>
+		<span class="bubble_edge"></span>
+		<!--// ie8; --><i class="ie8_only bl"></i><i class="ie8_only br"></i>
+		<button type="button" class="tg_blur2"></button>
+	</div>
+</div>

@@ -1,0 +1,39 @@
+<include target="__setting.html" />
+
+<div class="rd clear">
+	<!--// Header -->
+	<div class="rd_hd clear" style="<!--@if(!$mi->rd_style)-->margin:0 -15px 20px<!--@end--><!--@if($mi->rd_padding)-->;margin-left:0;margin-right:0<!--@end-->">
+		<!--// 제목 : 게시판 스타일 -->
+		<div class="board clear">
+			<div class="top_area">
+				<strong class="cate fl" title="Category" cond="$module_info->use_category=='Y' && $update_log->category_srl">{$category_list[$update_log->category_srl]->title}</strong>
+				<div class="fr">
+					<span class="date m_no">{zdate($update_log->regdate,'Y.m.d H:i:s')}</span>
+				</div>
+				<h1 class="np_18px"><a>{$update_log->title}</a> <span class="is_admin" cond="$update_log->is_admin == 'Y'">{$lang->write_admin}</span></h1>
+			</div>
+		</div>
+		<table class="et_vars bd_tb" cond="$extra_vars">
+			<caption class="blind">Extra Form</caption>
+			<tr loop="$extra_vars=>$key,$val">
+				<th scope="row">{$key}</th>
+				<td>{$val}</td>
+			</tr>
+		</table>
+	</div>
+
+	<!--// Body -->
+	<div class="rd_body clear">
+		<article>{$update_log->content}</article>
+		<p>
+			{$lang->reason_update} :
+			{$update_log->reason_update}
+		</p>
+		<form action="./" method="post" onsubmit="if(!confirm('{$lang->msg_update_log_revert}')) return false; return procFilter(this, window.update)" cond="$update_log->is_admin !== 'Y' && $logged_info->is_admin !=='Y' || $logged_info->is_admin === 'Y'">
+			<input type="hidden" name="module" value="board" />
+			<input type="hidden" name="act" value="procBoardUpdateDocument" />
+			<input type="hidden" name="update_id" value="{$update_log->update_id}" />
+			<button class="bd_btn" type="submit">{$lang->cmd_modify_by_update_log}</button>
+		</form>
+	</div>
+</div>

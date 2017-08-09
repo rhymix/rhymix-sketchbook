@@ -504,7 +504,8 @@
 
 /* Write */
 .bd_wrt_main{padding:15px;background:#F3F3F3;border:1px solid #DDD;border-radius:10px}
-.bd_wrt_hd .itx,.bd_wrt .tag .itx{width:100%}
+.bd_wrt_hd .itx,.bd_wrt .tag .itx,.bd_wrt .reason .itx{width:100%}
+.bd_wrt .reason .itx {margin-top:10px}
 .opt_chk,.edit_opt{margin-top:8px}
 .opt_chk *{vertical-align:middle}
 .opt_chk .section{display:inline-block;height:24px;margin:4px 12px 4px 0;*display:inline;*zoom:1}

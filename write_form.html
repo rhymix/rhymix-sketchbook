@@ -51,6 +51,14 @@
 		</span>
 	</div>
 
+	<!--// 수정한 이유 -->
+	<div class="reason itx_wrp" cond="$oDocument->get('document_srl') && $module_info->update_log == 'Y'">
+		<span class="itx_wrp">
+			<label for="reason_update">{$lang->reason_update}</label>
+			<input type="text" name="reason_update" id="reason_update" value="" class="itx" title="reason update" />
+		</span>
+	</div>
+
 	<!--// 비로그인 입력 -->
 	<div class="edit_opt">
 		<block cond="!$is_logged">

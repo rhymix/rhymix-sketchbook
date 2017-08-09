@@ -21,6 +21,7 @@
 	<a cond="$mi->font_btn!='N' && $lang_type=='ko'" class="tg_btn2 bubble m_no" href="#" data-href=".bd_font_select" title="글꼴 선택"><strong>가</strong><i class="arrow down"></i></a>
 	<a class="font_plus bubble" href="#" title="{$lang->larger}"><i class="fa fa-search-plus"></i><b class="tx">{$lang->larger}</b></a>
 	<a class="font_minus bubble" href="#" title="{$lang->smaller}"><i class="fa fa-search-minus"></i><b class="tx">{$lang->smaller}</b></a>
+	<a class="bubble" href="{getUrl('act','dispBoardUpdateLog','document_srl',$oDocument->document_srl,'comment_srl','')}" cond="$update_view" title="{$lang->update_log}"><i class="fa fa-history"></i><b class="tx">{$lang->update_log}</b></a>
 	<a cond="$mi->viewer=='2'" class="if_viewer bubble" href="#" onclick="window.open('{getUrl('listStyle','viewer','page','')}','viewer','width=9999,height=9999,scrollbars=yes,resizable=yes,toolbars=no');return false;" title="{$lang->viewer}"><i class="fa fa-picture-o"></i><b class="tx">{$lang->viewer}</b></a>
 	<!--@end-->
 	<a class="back_to bubble m_no" href="#bd_{$mi->module_srl}_{$oDocument->document_srl}" title="{$lang->cmd_move_up}"><i class="fa fa-arrow-up"></i><b class="tx">{$lang->cmd_move_up}</b></a>
