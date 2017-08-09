@@ -13,17 +13,19 @@
 				<h1 class="np_18px"><a>{$update_log->title}</a> <span class="is_admin" cond="$update_log->is_admin == 'Y'">{$lang->write_admin}</span></h1>
 			</div>
 		</div>
-		<table class="et_vars bd_tb" cond="$extra_vars">
-			<caption class="blind">Extra Form</caption>
-			<tr loop="$extra_vars=>$key,$val">
-				<th scope="row">{$key}</th>
-				<td>{$val}</td>
-			</tr>
-		</table>
 	</div>
 
 	<!--// Body -->
 	<div class="rd_body clear">
+		<table class="et_vars bd_tb" cond="$extra_vars" style="display:table">
+			<caption class="blind">Extra Form</caption>
+			{@ $etIdx=1 }
+			<tr loop="$extra_vars=>$key,$val" class="bg{$etIdx%2}">
+				<th scope="row">{$key}</th>
+				<td>{$val}</td>
+				{@ $etIdx++ }
+			</tr>
+		</table>
 		<article>{$update_log->content}</article>
 		<p>
 			{$lang->reason_update} :
