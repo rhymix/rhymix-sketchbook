@@ -88,7 +88,7 @@ $mi->fdb_style='fdb_v2';
 		</div>
 		<!--// 글 정보 -->
 		<div class="guest_meta">
-			<a cond="!$oDocument->getMemberSrl() && $oDocument->isExistsHomepage()" href="{$oDocument->getHomepageUrl()}" onclick="window.open(this.href);return false">{$oDocument->getNickName()}</a>
+			<a cond="!$oDocument->getMemberSrl() && $oDocument->isExistsHomepage()" href="{$oDocument->getHomepageUrl()}" target="_blank" rel="noopener">{$oDocument->getNickName()}</a>
 			<b cond="!$oDocument->getMemberSrl() && !$oDocument->isExistsHomepage()">{$oDocument->getNickName()}</b>
 			<a cond="$oDocument->getMemberSrl()" href="#popup_menu_area" class="member_{$oDocument->get('member_srl')}" onclick="return false">{$oDocument->getNickName()}</a>
 			<span class="date">{getTimeGap($oDocument->get('regdate'), "Y.m.d H:i")}</span><small cond="$grant->manager || $mi->display_ip_address=='Y'" class="m_no">({$oDocument->getIpaddress()})</small>

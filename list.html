@@ -53,7 +53,7 @@ Kakao.init('<!--@if($mi->kakao_key)-->{$mi->kakao_key}<!--@else-->5e9dc559053190
 	<!--// 우측 상단 설정 메뉴 -->
 	<div class="bd_set fr m_btn_wrp m_no">
 		<block cond="$grant->view && $mi->default_style!='guest' && $mi->default_style!='blog'">
-		<a cond="$oDocument->isExists() && !$mi->viewer" class="bg_f_f9" href="#" onclick="window.open('{getUrl('listStyle','viewer','page','')}','viewer','width=9999,height=9999,scrollbars=yes,resizable=yes,toolbars=no');return false"><em>✔</em> <strong>{$lang->viewer}</strong></a>
+		<a cond="$oDocument->isExists() && !$mi->viewer" class="bg_f_f9" href="#" onclick="winopen('{getUrl('listStyle','viewer','page','')}','viewer','width=9999,height=9999,scrollbars=yes,resizable=yes,toolbars=no');return false"><em>✔</em> <strong>{$lang->viewer}</strong></a>
 		<!--@if($mi->link_board)-->
 		<a cond="$mi->viewer_with!='N'" class="viewer_with bubble<!--@if($mi->viewer_with=='2' || $_COOKIE['cookie_viewer_with']=='Y')--> on<!--@end-->" href="#" title="{$lang->with_viewer_info}."><em>✔</em> <strong>{$lang->link_site_viewer}</strong></a>
 		<!--@else-->
