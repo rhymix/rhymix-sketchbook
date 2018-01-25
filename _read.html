@@ -302,19 +302,19 @@ Source form : http://www.xpressengine.com/21617245 by 시니시즘. Thanks!
 
 		<!--// Vote -->
 		<div cond="$mi->votes!='N'" class="rd_vote">
-			<a cond="$oDocument->getVoted() === false || $oDocument->getVoted() < 0" class="bd_login" href="#" onclick="doCallModuleAction('document','procDocumentVoteUp','{$oDocument->document_srl}');return false;"|cond="$is_logged" style="border:2px solid #{$mi->color};color:#{$mi->color};">
+			<a cond="$oDocument->getVoted() === false || $oDocument->getVoted() < 0" class="<!--@if($mi->non_login_vote != 'Y')-->bd_login<!--@end-->" href="#" onclick="doCallModuleAction('document','procDocumentVoteUp','{$oDocument->document_srl}');return false;"|cond="$is_logged || $mi->non_login_vote == 'Y'" style="border:2px solid #{$mi->color};color:#{$mi->color};">
 				<b><i class="fa fa-heart"></i> {$oDocument->get('voted_count')}</b>
 				<span>{$lang->cmd_vote}</span>
 			</a>
-			<a cond="$oDocument->getVoted() > 0" class="bd_login" href="#" onclick="doCallModuleAction('document','procDocumentVoteUpCancel','{$oDocument->document_srl}');return false;"|cond="$is_logged" style="border:2px solid #{$mi->color};color:#{$mi->color};">
+			<a cond="$oDocument->getVoted() > 0" class="<!--@if($mi->non_login_vote != 'Y')-->bd_login<!--@end-->" href="#" onclick="doCallModuleAction('document','procDocumentVoteUpCancel','{$oDocument->document_srl}');return false;"|cond="$is_logged || $mi->non_login_vote == 'Y'" style="border:2px solid #{$mi->color};color:#{$mi->color};">
 				<b><i class="fa fa-heart"></i> {$oDocument->get('voted_count')}</b>
 				<span>{$lang->cmd_vote}</span>
 			</a>
-			<a cond="!$mi->votes && $oDocument->getVoted() === false || $oDocument->getVoted() > 0" class="blamed bd_login" href="#" onclick="doCallModuleAction('document','procDocumentVoteDown','{$oDocument->document_srl}');return false;"|cond="$is_logged">
+			<a cond="!$mi->votes && $oDocument->getVoted() === false || $oDocument->getVoted() > 0" class="blamed <!--@if($mi->non_login_vote != 'Y')-->bd_login<!--@end-->" href="#" onclick="doCallModuleAction('document','procDocumentVoteDown','{$oDocument->document_srl}');return false;"|cond="$is_logged || $mi->non_login_vote == 'Y'">
 				<b><i class="fa fa-heart"></i> {$oDocument->get('blamed_count')}</b>
 				<span>{$lang->cmd_vote_down}</span>
 			</a>
-			<a cond="!$mi->votes && $oDocument->getVoted() < 0" class="blamed bd_login" href="#" onclick="doCallModuleAction('document','procDocumentVoteDownCancel','{$oDocument->document_srl}');return false;"|cond="$is_logged">
+			<a cond="!$mi->votes && $oDocument->getVoted() < 0" class="blamed <!--@if($mi->non_login_vote != 'Y')-->bd_login<!--@end-->" href="#" onclick="doCallModuleAction('document','procDocumentVoteDownCancel','{$oDocument->document_srl}');return false;"|cond="$is_logged || $mi->non_login_vote == 'Y'">
 				<b><i class="fa fa-heart"></i> {$oDocument->get('blamed_count')}</b>
 				<span>{$lang->cmd_vote_down}</span>
 			</a>
@@ -407,3 +407,4 @@ Source form : http://www.xpressengine.com/21617245 by 시니시즘. Thanks!
 </div>
 
 <hr id="rd_end_{$oDocument->document_srl}" class="rd_end clear" />
+
