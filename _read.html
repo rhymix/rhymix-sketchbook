@@ -168,10 +168,10 @@
 		</div>
 		<!--// Tag -->
 		{@ $tag_list=$oDocument->get('tag_list') }
-		<div cond="count($tag_list)" class="rd_t_f rd_tag css3pie clear">
+		<div cond="countobj($tag_list)" class="rd_t_f rd_tag css3pie clear">
 			<div class="bg_f_color border_color">TAG &bull;</div>
 			<ul>
-				<!--@for($i=0;$i<count($tag_list);$i++)-->
+				<!--@for($i=0;$i<countobj($tag_list);$i++)-->
 				{@ $tag=$tag_list[$i]; }
 				<li><a href="{getUrl('search_target','tag','search_keyword',$tag,'document_srl','')}">{escape($tag, false)}</a><span class="comma">,</span></li>
 				<!--@end-->
