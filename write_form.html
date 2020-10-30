@@ -103,13 +103,13 @@
 			<label for="allow_trackback">{$lang->allow_trackback}</label>
 		</div>
 		<div cond="$is_logged" class="section">
-			<input type="checkbox" name="notify_message" value="Y" checked="checked"|cond="$oDocument->useNotify() || (!$oDocument->useNotify() && @in_array('notify',$mi->wrt_opt))" id="notify_message" />
+			<input type="checkbox" name="notify_message" value="Y" checked="checked"|cond="$oDocument->useNotify() || (!$oDocument->useNotify() && @in_array('notify',$mi->wrt_opt ?: []))" id="notify_message" />
 			<label for="notify_message">{$lang->notify}</label>
 		</div>
 		<div cond="is_array($status_list)" class="section">
 			<!--@foreach($status_list AS $key=>$value)-->
-			<input cond="@!in_array('secret',$mi->wrt_opt)" type="radio" name="status" value="{$key}" id="{$key}" checked="checked"|cond="$oDocument->get('status')==$key || ($key=='PUBLIC' && !$document_srl)" />
-			<input cond="@in_array('secret',$mi->wrt_opt)" type="radio" name="status" value="{$key}" id="{$key}" checked="checked"|cond="$oDocument->get('status')==$key || ($key=='SECRET' && !$document_srl)" />
+			<input cond="@!in_array('secret',$mi->wrt_opt ?: [])" type="radio" name="status" value="{$key}" id="{$key}" checked="checked"|cond="$oDocument->get('status')==$key || ($key=='PUBLIC' && !$document_srl)" />
+			<input cond="@in_array('secret',$mi->wrt_opt ?: [])" type="radio" name="status" value="{$key}" id="{$key}" checked="checked"|cond="$oDocument->get('status')==$key || ($key=='SECRET' && !$document_srl)" />
 			<label for="{$key}">{$value}</label>
 			<!--@end-->
 		</div>
