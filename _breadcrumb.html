@@ -1,5 +1,6 @@
 <div class="bd_bc fl">
 	<a href="{getSiteUrl()}"><strong>Home</strong></a>
+	<!--@if(isset($main_menu))-->
 	<block loop="$main_menu->list=>$key1,$val1" cond="$val1['selected']">
 	<i class="fa fa-angle-right"></i><a href="{$val1['href']}"><!--@if(!$val1['list'])--><em>{$val1['text']}</em><!--@else-->{$val1['text']}<!--@end--></a>
 	<block loop="$val1['list']=>$key2,$val2" cond="$val2['selected']">
@@ -9,4 +10,5 @@
 	</block>
 	</block>
 	</block>
+	<!--@end-->
 </div>

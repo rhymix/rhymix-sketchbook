@@ -1,4 +1,9 @@
 <form action="{getUrl()}" method="get" onsubmit="return procFilter(this, search)" no-error-return-url="true">
+	{@
+	if(!isset($vid)) $vid = "";
+	if(!isset($category)) $category = "";
+	if(!isset($last_division)) $last_division = "";
+	}
 	<input type="hidden" name="vid" value="{$vid}" />
 	<input type="hidden" name="mid" value="{$mid}" />
 	<input type="hidden" name="category" value="{$category}" />
@@ -7,7 +12,7 @@
 			<td>
 				<span class="select itx">
 					<select name="search_target">
-						<option loop="$search_option=>$key,$val" value="{$key}" selected="selected"|cond="$search_target==$key">{$val}</option>
+						<option loop="$search_option=>$key,$val" value="{$key}" selected="selected"|cond="isset($search_target) && $search_target == $key">{$val}</option>
 					</select>
 				</span>
 			</td>

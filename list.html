@@ -36,6 +36,7 @@ Kakao.init('<!--@if($mi->kakao_key)-->{$mi->kakao_key}<!--@else-->5e9dc559053190
 
 <!--// 헤더 -->
 <div class="bd_hd<!--@if($oDocument->isExists())--> v2<!--@end--> clear">
+
 	<include cond="!$mi->breadcrumb" target="_breadcrumb.html" />
 	<!--// 폰트 버튼 -->
 	<div cond="$mi->font_btn!='N'" class="bd_font m_no fr" style="display:none"|cond="$oDocument->isExists() || $mi->font_btn=='2'">
@@ -55,9 +56,9 @@ Kakao.init('<!--@if($mi->kakao_key)-->{$mi->kakao_key}<!--@else-->5e9dc559053190
 		<block cond="$grant->view && $mi->default_style!='guest' && $mi->default_style!='blog'">
 		<a cond="$oDocument->isExists() && !$mi->viewer" class="bg_f_f9" href="#" onclick="winopen('{getUrl('listStyle','viewer','page','')}','viewer','width=9999,height=9999,scrollbars=yes,resizable=yes,toolbars=no');return false"><em>✔</em> <strong>{$lang->viewer}</strong></a>
 		<!--@if($mi->link_board)-->
-		<a cond="$mi->viewer_with!='N'" class="viewer_with bubble<!--@if($mi->viewer_with=='2' || $_COOKIE['cookie_viewer_with']=='Y')--> on<!--@end-->" href="#" title="{$lang->with_viewer_info}."><em>✔</em> <strong>{$lang->link_site_viewer}</strong></a>
+		<a cond="$mi->viewer_with!='N'" class="viewer_with bubble<!--@if($mi->viewer_with=='2' || isset($_COOKIE['cookie_viewer_with']) && $_COOKIE['cookie_viewer_with'] == 'Y')--> on<!--@end-->" href="#" title="{$lang->with_viewer_info}."><em>✔</em> <strong>{$lang->link_site_viewer}</strong></a>
 		<!--@else-->
-		<a cond="!$oDocument->isExists() && $mi->viewer_with!='N'" class="viewer_with rd_viewer bubble<!--@if($mi->viewer_with=='2' || $_COOKIE['cookie_viewer_with']=='Y')--> on<!--@end-->" href="#" title="{$lang->with_viewer_info}."><em>✔</em> <strong>{$lang->with_viewer}</strong></a>
+		<a cond="!$oDocument->isExists() && $mi->viewer_with!='N'" class="viewer_with rd_viewer bubble<!--@if($mi->viewer_with=='2' || isset($_COOKIE['cookie_viewer_with']) && $_COOKIE['cookie_viewer_with']=='Y')--> on<!--@end-->" href="#" title="{$lang->with_viewer_info}."><em>✔</em> <strong>{$lang->with_viewer}</strong></a>
 		<!--@end-->
 		</block>
 		<block cond="!$oDocument->isExists()">
@@ -177,7 +178,7 @@ Kakao.init('<!--@if($mi->kakao_key)-->{$mi->kakao_key}<!--@else-->5e9dc559053190
 <!--@end-->
 
 <!--// 하단 메뉴 -->
-<div cond="!$mi->display_setup_button" class="btm_mn clear">
+<div cond="!isset($mi->display_setup_button)" class="btm_mn clear">
 	<!--// FAQ 검색창 -->
 	<div cond="$mi->srch_btm!='N' && Mobile::isMobileCheckByAgent()" class="bd_faq_srch m_srch" style="display:block;float:none">
 		<include target="_search.html" />

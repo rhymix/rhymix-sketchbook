@@ -9,7 +9,9 @@ $order_icon="up";
 $order_type="desc";
 }
 <!--@end-->
-
+{@
+if(!isset($document_srl)) $document_srl = 0;
+}
 <p cond="!$document_list && !$notice_list" class="no_doc">{$lang->no_documents}</p>
 <table cond="$document_list || $notice_list" class="bd_lst bd_tb_lst bd_tb">
 	<caption class="blind">List of Articles</caption>
@@ -43,7 +45,14 @@ $order_type="desc";
 				<block cond="$document_srl==$document->document_srl">&raquo;</block><strong cond="$document_srl!=$document->document_srl">{$lang->notice}</strong>
 			</td>
 			<block cond="$val->type=='title' && $val->idx==-1">
-			<td cond="!$mi->show_cate && $mi->use_category=='Y'" class="cate" style="color:{$category_list[$document->get('category_srl')]->color}"|cond="$category_list[$document->get('category_srl')]->color!='transparent'"><strong>{$category_list[$document->get('category_srl')]->title}</strong></td>
+				{@
+				if(isset($category_list[$document->get('category_srl')]->color)) $category_color = $category_list[$document->get('category_srl')]->color; 
+				else $category_color = "";
+
+				if($document->get('category_srl') !== 0) $category_title = $category_list[$document->get('category_srl')]->title;
+				else $category_title = "";
+				}
+			<td cond="!$mi->show_cate && $mi->use_category=='Y'" class="cate" style="color:{$category_color}"|cond="$category_color != 'transparent'"><strong>{$category_title}</strong></td>
 			<td class="title">
 				<a href="{getUrl('document_srl',$document->document_srl, 'listStyle', $listStyle, 'cpage','')}"><strong>{$document->getTitle($mi->subject_cut_size)}</strong></a>
 				<block cond="!$mi->link_board">
@@ -78,7 +87,14 @@ $order_type="desc";
 				<block cond="$document_srl!=$document->document_srl">{$no}</block>
 			</td>
 			<block cond="$val->type=='title' && $val->idx==-1">
-			<td cond="!$mi->show_cate && $mi->use_category=='Y'" class="cate"><span style="color:{$category_list[$document->get('category_srl')]->color}"|cond="$category_list[$document->get('category_srl')]->color!='transparent'">{$category_list[$document->get('category_srl')]->title}</span></td>
+				{@
+				if(isset($category_list[$document->get('category_srl')]->color)) $category_color = $category_list[$document->get('category_srl')]->color;
+				else $category_color = "";
+				
+				if($document->get('category_srl') !== 0) $category_title = $category_list[$document->get('category_srl')]->title;
+				else $category_title = "";
+				}
+			<td cond="!$mi->show_cate && $mi->use_category=='Y'" class="cate"><span style="color:{$category_color}"|cond="$category_color != 'transparent'">{$category_title}</span></td>
 			<td class="title">
 				<!--// 제목 -->
 				<!--@if(!$mi->preview || (@!in_array('tx',$mi->preview) && !$document->thumbnailExists()))-->
