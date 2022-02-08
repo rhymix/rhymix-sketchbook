@@ -22,7 +22,7 @@
 				<span cond="$list_config['regdate']"><i class="fa fa-clock-o"></i><span>Date</span><b>{$document->getRegdate("Y.m.d")}</b></span>
 				<span cond="$mi->use_category=='Y' && $document->get('category_srl')"><i class="fa fa-bars"></i><span>Category</span><b>{$category_list[$document->get('category_srl')]->title}</b></span>
 				<span cond="$list_config['nick_name']"><i class="fa fa-user"></i><span>By</span><b><a href="#popup_menu_area" class="member_{$document->get('member_srl')}" onclick="return false;">{$document->getNickName()}</a></b></span>
-				<span cond="@in_array('list_m',$mi->cmt_count)"><i class="fa fa-comment"></i><span>Reply</span><b>{$document->getCommentCount()}</b></span>
+				<span cond="is_array($mi->cmt_count) && in_array('list_m',$mi->cmt_count)"><i class="fa fa-comment"></i><span>Reply</span><b>{$document->getCommentCount()}</b></span>
 				<span cond="$list_config['readed_count']"><i class="fa fa-eye"></i><span>Views</span><b>{$document->get('readed_count')}</b></span>
 				<span cond="$list_config['voted_count']"><i class="fa fa-heart"></i><span>Votes</span><b>{$document->get('voted_count')}</b></span>
 				<!--// 확장변수 -->
@@ -32,7 +32,7 @@
 				<span cond="$val->eid=='rating'"><strong class="starRating"><span style="width:{$document->getExtraValueHTML($val->idx)*10}%">{$document->getExtraValueHTML($val->idx)}</span></strong></span>
 				</block>
 				</block>
-				<block cond="@in_array('list_m',$mi->ext_img)">{$document->printExtraImages(60*60*$mi->duration_new)}</block>
+				<block cond="is_array($mi->ext_img) && in_array('list_m',$mi->ext_img)">{$document->printExtraImages(60*60*$mi->duration_new)}</block>
 				<input cond="$grant->manager" type="checkbox" name="cart" value="{$document->document_srl}" title="Check" onclick="doAddDocumentCart(this)" checked="checked"|cond="$document->isCarted()" />
 			</div>
 		</div>
@@ -60,7 +60,7 @@
 				<span cond="$list_config['regdate']"><i class="fa fa-clock-o"></i><span>Date</span><b>{getTimeGap($document->get('regdate'), "Y.m.d")}</b></span>
 				<span cond="$mi->use_category=='Y' && $document->get('category_srl')"><i class="fa fa-bars"></i><span>Category</span><b>{$category_list[$document->get('category_srl')]->title}</b></span>
 				<span cond="$list_config['nick_name']"><i class="fa fa-user"></i><span>By</span><b><a href="#popup_menu_area" class="member_{$document->get('member_srl')}" onclick="return false;">{$document->getNickName()}</a></b></span>
-				<span cond="@in_array('list_m',$mi->cmt_count)"><i class="fa fa-comment"></i><span>Reply</span><b>{$document->getCommentCount()}</b></span>
+				<span cond="is_array($mi->cmt_count) && in_array('list_m',$mi->cmt_count)"><i class="fa fa-comment"></i><span>Reply</span><b>{$document->getCommentCount()}</b></span>
 				<span cond="$list_config['readed_count']"><i class="fa fa-eye"></i><span>Views</span><b>{$document->get('readed_count')}</b></span>
 				<span cond="$list_config['voted_count']"><i class="fa fa-heart"></i><span>Votes</span><b>{$document->get('voted_count')}</b></span>
 				<!--// 확장변수 -->
@@ -70,7 +70,7 @@
 				<span cond="$val->eid=='rating'"><strong class="starRating"><span style="width:{$document->getExtraValueHTML($val->idx)*10}%">{$document->getExtraValueHTML($val->idx)}</span></strong></span>
 				</block>
 				</block>
-				<strong cond="@in_array('list_m',$mi->ext_img)" class="attached_image" title="Image"></strong>
+				<strong cond="is_array($mi->ext_img) && in_array('list_m',$mi->ext_img)" class="attached_image" title="Image"></strong>
 				<input cond="$grant->manager" type="checkbox" name="cart" value="{$document->document_srl}" title="Check" onclick="doAddDocumentCart(this)" checked="checked"|cond="$document->isCarted()" />
 				<a cond="$mi->link_board && $document->isEditable()" class="link_modify" href="{getUrl('act','dispBoardWrite','document_srl',$document->document_srl,'comment_srl','')}">{$lang->cmd_modify}</a>
 			</div>
