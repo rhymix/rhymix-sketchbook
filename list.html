@@ -28,7 +28,12 @@ Kakao.init('<!--@if($mi->kakao_key)-->{$mi->kakao_key}<!--@else-->5e9dc559053190
 <load target="js/jquery.masonry.min.js" type="body" />
 
 <!--// 상단내용 -->
-<div cond="!$mi->hd_tx">{$mi->header_text}</div>
+<!--@if(mobile::isMobileCheckByAgent() && isset($module_info->mobile_header_text) && $module_info->mobile_header_text)-->
+<div cond="!$mi->hd_tx">{$module_info->mobile_header_text}</div>
+<!--@else-->
+<div cond="!$mi->hd_tx">{$module_info->header_text}</div>
+<!--@end-->
+
 <div cond="$mi->hd_tx=='2' && $oDocument->isExists()">{$mi->header_text}</div>
 <div cond="$mi->hd_tx=='3' && !$oDocument->isExists()">{$mi->header_text}</div>
 

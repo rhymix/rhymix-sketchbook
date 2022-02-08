@@ -1,2 +1,6 @@
+	<!--@if(mobile::isMobileCheckByAgent() && isset($module_info->mobile_footer_text) && $module_info->mobile_footer_text)-->
+	<div class="footer_text">{$module_info->mobile_footer_text}</div>
+	<!--@else-->
 	<div cond="$module_info->footer_text" class="footer_text">{$module_info->footer_text}</div>
+	<!--@end-->
 </div>
