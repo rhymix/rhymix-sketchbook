@@ -39,14 +39,14 @@
 	if(!isset($mi->category)) $mi->category = null;
 	if(!isset($mi->vid)) $mi->vid = null;
 	if(!isset($mi->search_keyword)) $mi->search_keyword = null;
-	if(!isset($mi->ext_img)) $mi->ext_img = null;
-	if(!isset($mi->cmt_count)) $mi->cmt_count = null;
+	if(!isset($mi->ext_img)) $mi->ext_img = [];
+	if(!isset($mi->cmt_count)) $mi->cmt_count = [];
 	
-	if(!isset($mi->wrt_opt)) $mi->wrt_opt = null;
-	if(!isset($mi->btm_mn)) $mi->btm_mn = null;
-	if(!isset($mi->preview)) $mi->preview = null;
-	if(!isset($mi->viewer_itm)) $mi->viewer_itm = null;
-	if(!isset($mi->rd_blog_itm)) $mi->rd_blog_itm = null;
+	if(!isset($mi->wrt_opt)) $mi->wrt_opt = [];
+	if(!isset($mi->btm_mn)) $mi->btm_mn = [];
+	if(!isset($mi->preview)) $mi->preview = [];
+	if(!isset($mi->viewer_itm)) $mi->viewer_itm = [];
+	if(!isset($mi->rd_blog_itm)) $mi->rd_blog_itm = [];
 	if(!isset($mi->zine_thumb_width)) $mi->zine_thumb_width = null;
 	if(!isset($mi->zine_thumb_height)) $mi->zine_thumb_height = null;
 	if(!isset($mi->zine_margin)) $mi->zine_margin = null;
@@ -86,17 +86,36 @@
 	if(!isset($mi->img_insert_align)) $mi->img_insert_align = 'center';
 
 	<!--// 체크박스 옵션 -->
-	$mi->btm_mn = unserialize($mi->btm_mn);
-	$mi->preview = unserialize($mi->preview);
-	$mi->ext_img = unserialize($mi->ext_img);
-	$mi->cmt_count = unserialize($mi->cmt_count);
-	$mi->wrt_opt = unserialize($mi->wrt_opt);
-	$mi->viewer_itm = unserialize($mi->viewer_itm);
-	$mi->rd_blog_itm = unserialize($mi->rd_blog_itm);
+	$mi->btm_mn = is_string($mi->btm_mn) ? unserialize($mi->btm_mn) : [];
+	$mi->preview = is_string($mi->preview) ? unserialize($mi->preview) : [];
+	$mi->ext_img = is_string($mi->ext_img) ? unserialize($mi->ext_img) : [];
+	$mi->cmt_count = is_string($mi->cmt_count) ? unserialize($mi->cmt_count) : [];
+	$mi->wrt_opt = is_string($mi->wrt_opt) ? unserialize($mi->wrt_opt) : [];
+	$mi->viewer_itm = is_string($mi->viewer_itm) ? unserialize($mi->viewer_itm) : [];
+	$mi->rd_blog_itm = is_string($mi->rd_blog_itm) ? unserialize($mi->rd_blog_itm) : [];
 
 	if(isset($_COOKIE['bd_font']) && !isset($mi->font_btn)) $mi->font = $_COOKIE['bd_font'];
 	if(isset($_COOKIE['bd_editor'])) $mi->cmt_wrt = $_COOKIE['bd_editor'];
 	if(isset($_COOKIE['cookie_viewer_with'])) $mi->viewer_with = '';
+	if(!isset($mi->gall_tl_cut)) $mi->gall_tl_cut = null;
+	if(!isset($mi->gall_style)) $mi->gall_style = null;
+	if(!isset($mi->gallery_tl)) $mi->gallery_tl = null;
+	if(!isset($mi->deco_img)) $mi->deco_img = null;
+	if(!isset($mi->deco)) $mi->deco = null;
+	if(!isset($mi->tmb_hover_bg)) $mi->tmb_hover_bg = null;
+	if(!isset($mi->tmb_hover)) $mi->tmb_hover = null;
+	if(!isset($mi->trans_window)) $mi->trans_window = null;
+	if(!isset($mi->gall_ribbon)) $mi->gall_ribbon = null;
+	if(!isset($mi->gall_shadow)) $mi->gall_shadow = null;
+	if(!isset($mi->tmb_effect)) $mi->tmb_effect = null;
+	if(!isset($mi->thumbnail_type)) $mi->thumbnail_type = null;
+	if(!isset($mi->gall_deg)) $mi->gall_deg = null;
+	if(!isset($mi->gall_tl_font)) $mi->gall_tl_font = null;
+	if(!isset($mi->gall_hover_img)) $mi->gall_hover_img = null;
+	if(!isset($mi->thumb_css)) $mi->thumb_css = null;
+	if(!isset($mi->li_width)) $mi->li_width = null;
+	if(!isset($mi->li_height)) $mi->li_height = null;
+	if(!isset($mi->gall_align)) $mi->gall_align = null;
 
 	if($mi->custom_color) $mi->color = $mi->custom_color;
 	if($mi->custom_shadow) $mi->shadow = $mi->custom_shadow;

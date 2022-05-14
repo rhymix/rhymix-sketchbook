@@ -1,10 +1,13 @@
 <block cond="!$mi->gall_tl_font">
 {@ $mi->gall_tl_font = 'np';}
 </block>
-
+{@
+if(!isset($document_srl)) $document_srl = 0;
+}
 <include cond="$notice_list && $mi->notice_style=='2'" target="_notice.html" />
 <ol class="bd_lst bd_tmb_lst gall_style{$mi->gall_style} img_load{$mi->tmb_effect} tmb_bg{$mi->tmb_hover_bg} clear" data-gall_deg="{$mi->gall_deg}"|cond="$mi->gall_deg"><!--// 
 공지 시작 --><li cond="$notice_list && !$mi->notice_style" loop="$notice_list=>$no,$document" class="notice">
+
 	<div class="tmb_wrp ribbon_v{$mi->ribbon_style}">
 		<!--// 그림자 -->
 		<block cond="$mi->gall_shadow!='N'">
@@ -19,6 +22,7 @@
 		<!--// 좌측 상단 리본 -->
 		<span class="ribbon nnu notice"><i>notice</i></span>
 		<!--// 우측 하단 투명창 -->
+
 		<span cond="$mi->trans_window!='N'" class="trans_window fixed">
 			<block cond="$mi->trans_window!='date'">by {$document->getNickName()}</block>
 			<b cond="$mi->trans_window=='date'">{$document->getRegdate("Y.m.d")}</b>
@@ -51,7 +55,8 @@
 		<input cond="$grant->manager" type="checkbox" name="cart" value="{$document->document_srl}" title="Check this" onclick="doAddDocumentCart(this)" checked="checked"|cond="$document->isCarted()" />
 	</p>
 </li><!--// 
-일반 목록 시작 --><li loop="$document_list=>$no,$document" class="select"|cond="$document_srl==$document->document_srl">
+일반 목록 시작 -->
+	<li loop="$document_list=>$no,$document" class="select"|cond="$document_srl==$document->document_srl">
 	<div class="tmb_wrp ribbon_v{$mi->ribbon_style}">
 		<!--// 그림자 -->
 		<block cond="$mi->gall_shadow!='N'">
@@ -102,7 +107,7 @@
 						<b cond="$list_config['regdate']" class="tl">{$document->getRegdate("Y/m/d")}</b>
 						<block cond="$list_config['nick_name']">by <b>{$document->getNickName()}</b><br /></block>
 						<block cond="$mi->use_category=='Y' && $document->get('category_srl')">in <b>{$category_list[$document->get('category_srl')]->title}</b><br /></block>
-						<span><block cond="$list_config['readed_count']">Views <b>{$document->get('readed_count')}</b>&nbsp;</block> <block cond="$list_config['voted_count']">Likes <b>{$document->get('voted_count')}</b></block></span>
+						<span><block cond="isset($list_config['readed_count'])">Views <b>{$document->get('readed_count')}</b>&nbsp;</block> <block cond="isset($list_config['voted_count'])">Likes <b>{$document->get('voted_count')}</b></block></span>
 						<block cond="$document->getCommentCount()">Replies <b>{$document->getCommentCount()}</b></block>
 					</span>
 				</span>
