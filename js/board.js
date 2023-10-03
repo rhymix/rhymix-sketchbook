@@ -299,7 +299,7 @@ if(default_style=='webzine'){
 			});
 		});
 	};
-	
+
 };
 
 // Link Board
@@ -485,7 +485,8 @@ jQuery(function($){
 		$.removeCookie('use_np');
 	} else {
 		bd.addClass('use_np');
-		$.cookie('use_np','use_np');
+		$.removeCookie('use_np');
+		$.cookie('use_np', 'use_np', { path: '/' });
 	};
 });
 

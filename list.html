@@ -12,7 +12,8 @@ var bdLogin = <!--@if(!$is_logged)-->"{$lang->bd_login}@" + current_url.setQuery
 jQuery(function($){
 	board('#bd_{$mi->module_srl}_{$oDocument->document_srl}');
 <!--@if($mi->default_style!='viewer')-->
-	$.cookie('bd_viewer_font',$('body').css('font-family'));
+	$.removeCookie('bd_viewer_font');
+	$.cookie('bd_viewer_font', $('body').css('font-family'), { path: '/' });
 <!--@end-->
 });
 <!--@if(Mobile::isMobileCheckByAgent())-->
@@ -235,7 +236,7 @@ Kakao.init('<!--@if($mi->kakao_key)-->{$mi->kakao_key}<!--@else-->5e9dc559053190
 	<a class="frst_last bubble<!--@if($page==1)--> this<!--@end-->" href="{getUrl('page','','document_srl','','division',$division,'last_division',$last_division)}" title="{$lang->first_page}">1</a>
 	<span cond="$page>($mi->page_count)/2+2" class="bubble"><a href="#" class="tg_btn2" data-href=".bd_go_page" title="{$lang->go_page}">...</a></span>
 	<block loop="$page_no=$page_navigation->getNextPage()" cond="$page_no!=1 && $page_no!=$page_navigation->last_page">
-		<strong class="this" cond="$page==$page_no">{$page_no}</strong> 
+		<strong class="this" cond="$page==$page_no">{$page_no}</strong>
 		<a cond="$page!=$page_no" href="{getUrl('page',$page_no,'document_srl','','division',$division,'last_division',$last_division)}">{$page_no}</a>
 	</block>
 	<span cond="($page+($mi->page_count+1)/2<$page_navigation->last_page) && ($mi->page_count+1<$page_navigation->last_page)" class="bubble"><a href="#" class="tg_btn2" data-href=".bd_go_page" title="{$lang->cmd_go_to_page}">...</a></span>
