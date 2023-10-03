@@ -61,7 +61,7 @@
 			</div>
 			<h1 cond="$mi->rd_tl!='N'" class="font {$mi->rd_tl_font}" style="{$mi->rd_tl_css};-webkit-animation-name:rd_h1_v{$mi->rd_h1_ani};-moz-animation-name:rd_h1_v{$mi->rd_h1_ani};animation-name:rd_h1_v{$mi->rd_h1_ani};">{$oDocument->getTitle()}</h1>
 			<div cond="!$mi->rd_preview && $oDocument->getExtraEidValue('rd_preview')" class="rd_preview">{$oDocument->getExtraEidValue('rd_preview')}</div>
-			<div class="btm_area {$mi->rd_btm_font} np_18px" style="text-align:{$mi->rd_btm}"> 
+			<div class="btm_area {$mi->rd_btm_font} np_18px" style="text-align:{$mi->rd_btm}">
 				<span cond="$mi->rd_blog_cate=='2' && $mi->use_category=='Y' && $oDocument->get('category_srl')"><small>In </small><b title="Category">{$category_list[$oDocument->get('category_srl')]->title}</b></span>
 				<span cond="!$mi->rd_blog_nick"><small>by </small><b>{$oDocument->getNickName()}</b></span>
 				<span cond="!$mi->rd_blog_date" title="{$oDocument->getRegdate('Y.m.d H:i')}"><small>posted </small><b class="date">{$oDocument->getRegdate('M d, Y')}</b></span>
@@ -189,7 +189,7 @@
 			<div cond="$oDocument->getSignature()" class="get_sign">{$oDocument->getSignature()}</div>
 		</div>
 		<!--// Prev-Next -->
-<!--// 현재목록 외 이전글-다음글 구하기 
+<!--// 현재목록 외 이전글-다음글 구하기
 Source form : http://www.xpressengine.com/21617245 by 시니시즘. Thanks!
 1. search : X
 2. get image : /
@@ -356,7 +356,7 @@ Source form : http://www.xpressengine.com/21617245 by 시니시즘. Thanks!
 
 	<!--// Comment -->
 <block cond="$mi->cmt_wrt=='sns'">
-{@ 
+{@
 	$mi->cmt_wrt_position='';
 	$mi->profile_img='';
 }
