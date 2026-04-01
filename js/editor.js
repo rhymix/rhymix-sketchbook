@@ -27,10 +27,10 @@ jQuery(function($){
 		.blur();
 
 // ColorPicker
-	$('.jPicker .Icon').live('mousedown',function(){
+	$('.jPicker .Icon').on('mousedown',function(){
 		$('#title_color').prev().css('visibility','hidden')
 	});
-	$('.jPicker.Container .Button input').live('mousedown',function(){
+	$('.jPicker.Container .Button input').on('mousedown',function(){
 		$('#title_color').prev().click();
 	});
 	$('.bd_wrt input[type=submit]').click(function(){
