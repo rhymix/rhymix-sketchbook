@@ -287,7 +287,7 @@ if(default_style=='webzine'){
 	if(bd.find('form>div.wysiwyg').length){
 		if($('#re_cmt').length) editorStartTextarea(2,'content','comment_srl');
 	} else {
-		$.getScript("modules/editor/tpl/js/editor_common.min.js",function(){
+		$.getScript(request_uri+'modules/editor/tpl/js/editor_common.js',function(){
 			if($('#re_cmt').length) editorStartTextarea(2,'content','comment_srl');
 			var cmtWrt = bd.find('form.cmt_wrt textarea');
 			if(bd.find('form.bd_wrt_main textarea').length){
@@ -454,7 +454,7 @@ if(bd.find('div.rd').length){
 		if(bd.find('form>div.wysiwyg').length){
 			editorStartTextarea(2,'content','comment_srl');
 		} else {
-			$.getScript(request_uri+'modules/editor/tpl/js/editor_common.min.js',function(){
+			$.getScript(request_uri+'modules/editor/tpl/js/editor_common.js',function(){
 				editorStartTextarea(2,'content','comment_srl');
 				var cmtWrt = bd.find('form.cmt_wrt textarea');
 				if(default_style=='blog'){
