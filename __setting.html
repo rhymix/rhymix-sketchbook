@@ -41,7 +41,7 @@
 	if(!isset($mi->search_keyword)) $mi->search_keyword = null;
 	if(!isset($mi->ext_img)) $mi->ext_img = [];
 	if(!isset($mi->cmt_count)) $mi->cmt_count = [];
-	
+
 	if(!isset($mi->wrt_opt)) $mi->wrt_opt = [];
 	if(!isset($mi->btm_mn)) $mi->btm_mn = [];
 	if(!isset($mi->preview)) $mi->preview = [];
@@ -60,13 +60,13 @@
 	if(!isset($mi->extra_num2)) $mi->extra_num2 = null;
 	if(!isset($mi->extra_num2)) $mi->extra_num2 = null;
 	if(!isset($search_keyword)) $search_keyword = null;
-	
+
 	if(!isset($mi->cnb_open)) $mi->cnb_open = null;
 	if(!isset($mi->cnb_count)) $mi->cnb_count = null;
 	if(!isset($order_type)) $order_type = null;
 	if(!isset($sort_index)) $sort_index = null;
 	if(!isset($search_target)) $search_target = "";
-	
+
 	if(!isset($mi->srch_btm)) $mi->srch_btm = null;
 	if(!isset($mi->write_btm_btn)) $mi->write_btm_btn = null;
 	if(!isset($division)) $division = null;
@@ -121,7 +121,7 @@
 	if($mi->custom_shadow) $mi->shadow = $mi->custom_shadow;
 	if(!isset($mi->color)) $mi->color = 333333;
 	if(!isset($mi->color))$mi->shadow = '#999';
-	if($mi->colorset=='black') $mi->color = EEEEEE;
+	if($mi->colorset=='black') $mi->color = 'EEEEEE';
 	if($mi->colorset=='black') $mi->shadow = '#000';
 	if($mi->color=='87cefa') $mi->shadow = '#5f9ea0';<!--// 라이트스카이블루 -->
 	if($mi->color=='6495ed') $mi->shadow = '#4682b4';<!--// 콘플라워블루 -->
@@ -323,7 +323,7 @@
 .bd_tb_lst .cate span,.bd_tb_lst .author span,.bd_tb_lst .last_post small{max-width:{$mi->normal_lst_tdW}px}
 <!--@elseif($mi->default_style=='webzine')-->
 <!--// Webzine -->
-<block cond="!$mi->zine_hover">
+<block cond="empty($mi->zine_hover)">
 .bd_zine.zine li:hover .tmb_wrp{ -ms-transform:rotate(5deg);transform:rotate(5deg)}
 .bd_zine.card li:hover{ -ms-transform:scale(1.05);transform:scale(1.05)}
 </block>
@@ -334,7 +334,7 @@
 .bd_zine.zine .rt_area{margin-left:{$mi->zine_thumb_width+20}px}
 .bd_zine.zine .tmb_wrp{margin-left:-{$mi->zine_thumb_width+20}px}
 </block>
-<block cond="$mi->zine_style=='3' || $mi->zine_style=='4'">
+<block cond="isset($mi->zine_style) && ($mi->zine_style=='3' || $mi->zine_style=='4')">
 .bd_zine{margin:0 auto;padding:{$mi->zine_margin}px 0}
 .bd_zine li{width:{$mi->zine_thumb_width}px;margin:{$mi->zine_margin}px}
 .bd_zine .tmb_wrp .no_img{width:{$mi->zine_thumb_width-2}px;<!--@if($mi->thumbnail_type=='ratio')-->height:118px;line-height:118px<!--@else-->height:{$mi->zine_thumb_width-2}px;line-height:{$mi->zine_thumb_width-2}px<!--@end-->;border:1px solid #DDD}
