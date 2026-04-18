@@ -72,7 +72,7 @@ Kakao.init('<!--@if($mi->kakao_key)-->{$mi->kakao_key}<!--@else-->5e9dc559053190
 		<a cond="!$mi->write_btn || ($mi->write_btn!='N' && $grant->write_document)" href="{getUrl('act','dispBoardWrite','document_srl','')}"><b class="ico_16px write"></b>{$lang->cmd_write}</a>
 		<span cond="$mi->font_btn=='2'" class="font_select"><a class="select tg_btn2" href="#" data-href=".bd_font_select"><b class="tx_ico_chk">T</b>{$lang->font}<i class="arrow down"></i></a></span>
 		<block cond="$grant->manager">
-		<a href="{getUrl('act','dispBoardAdminBoardInfo')}"><b class="ico_16px setup"></b>{$lang->cmd_setup}</a>
+		<a href="{getUrl('','module','admin','act','dispBoardAdminBoardInfo','module_srl',$mi->module_srl)}"><b class="ico_16px setup"></b>{$lang->cmd_setup}</a>
 		<a class="m_no" href="{getUrl('','module','document','act','dispDocumentManageDocument')}" onclick="popopen(this.href,'manageDocument');return false"><b class="tx_ico_chk">✔</b>{$lang->cmd_manage_document}</a>
 		<input cond="$mi->default_style!='list'" type="checkbox" onclick="XE.checkboxToggleAll({ doClick:true });" class="iCheck" title="Check All" />
 		</block>
@@ -213,7 +213,7 @@ Kakao.init('<!--@if($mi->kakao_key)-->{$mi->kakao_key}<!--@else-->5e9dc559053190
 		<a cond="@in_array('tag',$mi->btm_mn ?: [])" class="btn_img m_no" href="{getUrl('act','dispBoardTagList')}"><i class="fa fa-tag"></i> {$lang->tag}</a>
 		<a cond="!$mi->write_btm_btn || ($mi->write_btm_btn!='N' && $grant->write_document)" class="btn_img" href="{getUrl('act','dispBoardWrite','document_srl','')}"><i class="ico_16px write"></i> {$lang->cmd_write}</a>
 		<block cond="$grant->manager">
-		<a class="btn_img" href="{getUrl('act','dispBoardAdminBoardInfo')}"><i class="ico_16px setup"></i> {$lang->cmd_setup}</a>
+		<a class="btn_img" href="{getUrl('','module','admin','act','dispBoardAdminBoardInfo','module_srl',$mi->module_srl)}"><i class="ico_16px setup"></i> {$lang->cmd_setup}</a>
 		<a class="btn_img" href="{getUrl('','module','document','act','dispDocumentManageDocument')}" onclick="popopen(this.href,'manageDocument');return false"><i class="tx_ico_chk">✔</i> {$lang->cmd_manage_document}</a>
 		</block>
 	</div>
